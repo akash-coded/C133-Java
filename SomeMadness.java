@@ -6,7 +6,7 @@ class DemoContainer {
         System.out.println(arr[4]); // ArrayIndexOutOfBoundsException
     }
 
-    void caller() throws Exception, ArithmeticException, ArrayIndexOutOfBoundsException, IOException {
+    void caller() throws ArithmeticException, ArrayIndexOutOfBoundsException, IOException {
         try {
             // try {
             // throw new ArithmeticException();
@@ -22,7 +22,7 @@ class DemoContainer {
         } finally {
             System.out.print("Inside finally block of caller(): ");
             try {
-                throw new Exception();
+                throw new ArithmeticException();
             } catch (ArithmeticException e) {
                 System.out.print("Inside nested catch of caller(): ");
                 throw e; // This is the exception that is actually rethrown
@@ -38,18 +38,15 @@ public class SomeMadness {
     public static void main(String[] args) throws IOException {
         DemoContainer c = new DemoContainer();
         try {
+            System.out.print("Inside main(): ");
             c.caller();
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.print("Inside main(): ");
             System.out.println("Fallback logic for array index out of bounds" + e);
         } catch (ArithmeticException e) {
-            System.out.print("Inside main(): ");
             System.out.println("Fallback logic for arithmetic exception" + e);
         } catch (NullPointerException e) {
-            System.out.print("Inside main(): ");
             System.out.println("Fallback logic for null pointer exception" + e);
         } catch (Exception e) {
-            System.out.print("Inside main(): ");
             System.out.println("Fallback logic for exception" + e);
         }
         System.out.println("End of main");
