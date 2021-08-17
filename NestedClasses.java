@@ -6,19 +6,28 @@ class OuterClass {
         static int memberInnerX = 100;
         int memberInnerY = 200;
 
-        public void memberInnerFun() {
+        public void memberNonStaticInnerFun() {
+            System.out.println("Member Inner: " + this);
             System.out.print("Instance Method of Member Inner Class:: ");
             System.out.print(x + " " + y); // Can access all members of the outer class
-            System.out.println(" " + memberInnerX + " " + memberInnerY);
+            System.out.println(" " + memberInnerX + " " + memberInnerY); // Can access all members of the inner class
+        }
+
+        public static void memberStaticInnerFun() {
+            System.out.print("Static Method of Member Inner Class:: ");
+            System.out.print(x + " "); // Can access only static members of the outer class
+            System.out.println(memberInnerX); // Can access only static members of the inner class
         }
     }
 
     public void outerFun() {
+        System.out.println("Outer: " + this);
         class LocalInnerClass {
             static int localInnerX = 100;
             int localInnerY = 200;
 
             public void localInnerFun() {
+                System.out.println("Local Inner: " + this);
                 System.out.print("Instance Method of Local Inner Class:: ");
                 System.out.print(x + " " + y); // Can access all members of the outer class
                 System.out.println(" " + localInnerX + " " + localInnerY); // After JDK-7
@@ -33,7 +42,8 @@ class OuterClass {
         localInner.localInnerFun();
 
         MemberInnerClass memberInner = new MemberInnerClass();
-        memberInner.memberInnerFun();
+        memberInner.memberNonStaticInnerFun();
+        MemberInnerClass.memberStaticInnerFun();
 
         System.out.print("Instance Method of Outer Class:: ");
         System.out.println(x + " " + y);
@@ -46,6 +56,8 @@ public class NestedClasses {
         outer.outerFun();
 
         OuterClass.MemberInnerClass memberInner = outer.new MemberInnerClass();
-        memberInner.memberInnerFun();
+        memberInner.memberNonStaticInnerFun();
+        OuterClass.MemberInnerClass.memberStaticInnerFun();
+        memberInner.memberStaticInnerFun();
     }
 }
