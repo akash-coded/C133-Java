@@ -1,6 +1,7 @@
 class MethodOverload {
     // Method Overloading via fun()
     void fun() { // Function 1
+        int x = 5;
         System.out.println("I am a function with no args");
     }
 
