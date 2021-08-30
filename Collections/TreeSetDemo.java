@@ -1,9 +1,9 @@
 package Collections;
 
 import java.util.TreeSet;
+import java.util.Comparator;
 
 class Book implements Comparable<Book> {
-
     int id;
     String name, author, publisher;
     int quantity;
@@ -18,9 +18,21 @@ class Book implements Comparable<Book> {
 
     @Override
     public int compareTo(Book b) {
-        if (this.id > b.id) {
+        if (this.id < b.id) { // descending order
             return 1;
-        } else if (this.id < b.id) {
+        } else if (this.id > b.id) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+}
+
+class ImplComparator implements Comparator<Book> {
+    public int compare(Book b1, Book b2) {
+        if (b1.quantity > b2.quantity) { // ascending order
+            return 1;
+        } else if (b1.quantity < b2.quantity) {
             return -1;
         } else {
             return 0;
@@ -30,7 +42,9 @@ class Book implements Comparable<Book> {
 
 public class TreeSetDemo {
     public static void main(String[] args) {
-        TreeSet<Book> set = new TreeSet<>();
+        Comparator<Book> obj = new ImplComparator();
+
+        TreeSet<Book> set = new TreeSet<>(obj);
 
         // Creating Books
         Book b1 = new Book(121, "Let us C", "Yashwant Kanetkar", "BPB", 8);
