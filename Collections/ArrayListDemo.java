@@ -1,6 +1,7 @@
 package Collections;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 public class ArrayListDemo {
@@ -45,5 +46,11 @@ public class ArrayListDemo {
         for (Integer ele : list2) {
             System.out.println(ele);
         }
+
+        Collections.sort(list2);
+        list2.forEach(ele -> System.out.println(ele));
+
+        Collections.sort(list2, Collections.reverseOrder());
+        list2.forEach(System.out::println);
     }
 }

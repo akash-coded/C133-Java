@@ -4,6 +4,7 @@ public class Quiz1 {
     public static void main(String[] args) {
         System.out.println(Integer.parseInt("ab10"));
     }
+
 }
 
 // 1. public class LineUp {
@@ -109,3 +110,38 @@ public class Quiz1 {
 // C. c
 // D. ac
 // E. abc
+
+// public class Boxer1 {
+// Integer i;
+// int x;
+
+// public Boxer1(int y) {
+// x = i + y;
+// System.out.println(x);
+// }
+
+// public static void main(String[] args) {
+// new Boxer1(new Integer(4));
+// }
+// }
+
+// What is the result?
+
+// public static int sum(List list) {
+// int sum = 0;
+// for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
+// int i = ((Integer)iter.next()).intValue();
+// sum += i;
+// }
+// return sum;
+// }
+
+// What three changes allow the class to be used with generics
+// and avoid an unchecked warning? (Choose three.)
+
+// A. Remove line 133.
+// B. Replace line 133 with "int i = iter.next();".
+// C. Replace line 132 with "for (int i : intList) {".
+// D. Replace line 132 with "for (Iterator iter : intList) {".
+// E. Replace the method declaration with "sum(List<int> intList)".
+// F. Replace the method declaration with "sum(List<Integer> intList)".
