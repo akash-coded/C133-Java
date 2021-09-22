@@ -7,7 +7,9 @@ public class App {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             CityController cities = new CityController();
-            cities.index();
+            cities.create();
+            cities.read(); // prints the details of all cities
+            cities.readOne(); // prints the details of one city
         } catch (Exception e) {
             System.out.println("Some error occurred in the application " + e);
         }

@@ -1,24 +1,38 @@
 package controllers;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import models.City;
 
+/**
+ * Controller class for operations on city table
+ */
 public class CityController {
-    public void index() { // Read operation
-        try {
-            ResultSet result = City.fetchTenCities();
-            System.out.println("Id\tName\tCountryCode\tDistrict\tPopulation");
-            while (result != null && result.next()) {
-                int id = result.getInt(1);
-                String name = result.getString(2);
-                String countryCode = result.getString(3);
-                String district = result.getString(4);
-                int population = result.getInt(5);
-                System.out.println(id + "\t" + name + "\t" + countryCode + "\t" + district + "\t" + population);
-            }
-        } catch (SQLException | NullPointerException e) {
-            System.out.println("Error in reading the ResultSet");
-        }
+    /**
+     * Retrieves the details of all the cities and prints them
+     */
+    public void read() {
+        ResultSet result = City.fetchAllCityDetails();
+        City.printCityDetails(result);
     }
+
+    /**
+     * Retrieves the details of the city correspondinf to the id
+     */
+    public void readOne() {
+        ResultSet result = City.fetchCityDetailsById(4500);
+        City.printCityDetails(result);
+    }
+
+    public void create() {
+        int rowsAffected = City.insertCity(4500, "Old Delhi", "IND", "Delhi", 12737);
+        System.out.println(rowsAffected + " records were inserted");
+    }
+
+    // public int update() {
+
+    // }
+
+    // public int delete() {
+
+    // }
 }
